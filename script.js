@@ -11,7 +11,11 @@ $(document).ready(function(){
     //  });
     setInterval(function() {
       end = postTweets(end);
-    }, 5000);
+    }, 20000);
+    $('h1').on('click', function() {
+      $('.tweet-container').css('display', 'flex');
+      $('.profile-container').css('display', 'none');
+    })
    });
 
 function getDate() {

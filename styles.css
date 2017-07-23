@@ -2,11 +2,19 @@ h1{
     /*font-family: 'Oxygen', sans-serif;*/
     /*font-weight: normal;*/
     font-family: 'Source Code Pro', monospace;
-
-    text-align: center
+    text-align: center;
+    -ms-transform: rotate(-10deg); /* IE 9 */
+    -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
+    transform: rotate(-10deg);
+    font-size: 3em;
 }
 
-button{
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/*button{
     font-family: 'Oxygen', sans-serif;
     font-weight: bold;
     font-size: 15px;
@@ -18,15 +26,13 @@ button{
 }
 
 button:hover {
-    /*background: #d7e8f9;*/
-    /*color: white;*/
     text-decoration: underline;
     border-width: 3px;
 }
 
 button:active{
     outline: none;
-}
+}*/
 
 body{
     background: #d7e8f9;
@@ -66,4 +72,9 @@ body{
     font-weight: light;
     font-size: 10px;
     text-align: center
+}
+
+.profile-container{
+    position: absolute;
+    display: none;
 }
