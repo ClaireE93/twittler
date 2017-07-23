@@ -9,7 +9,10 @@ button{
 }
 
 .tweet-container{
-
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    align-content: center;
 }
 
 .tweet{
@@ -21,5 +24,5 @@ button{
     font-family: 'Oxygen', sans-serif;
     font-weight: bold;
     font-size: 10px;
-
+    text-align: center
 }
