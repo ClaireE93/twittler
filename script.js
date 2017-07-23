@@ -4,15 +4,14 @@ $(document).ready(function(){
     //  var $body = $('body');
      // $body.html('');
      end = 0;
-
      end = postTweets(end);
-     $('button').on('click', function() {
-      //  $('.tweet-container').html('');
-       end = postTweets(end);
-     });
-
-
-
+    //  $('button').on('click', function() {
+    //   //  $('.tweet-container').html('');
+    //    end = postTweets(end);
+    //  });
+    setInterval(function() {
+      end = postTweets(end);
+    }, 5000);
    });
 
 function getDate() {
