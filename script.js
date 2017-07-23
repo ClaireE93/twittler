@@ -1,11 +1,16 @@
+let end;
+
 $(document).ready(function(){
     //  var $body = $('body');
      // $body.html('');
+     end = 0;
+
+     end = postTweets(end);
      $('button').on('click', function() {
-       $('.tweet-container').html('');
-       postTweets();
+      //  $('.tweet-container').html('');
+       end = postTweets(end);
      });
-     postTweets();
+
 
 
    });
@@ -17,18 +22,22 @@ function getDate() {
   return date + ' ' + time;
 }
 
-function postTweets() {
+function postTweets(end) {
   var index = streams.home.length - 1;
-
-  while(index >= 0){
+  var newEnd = index + 1;
+  console.log('start:' + index);
+  console.log('end: ' + end);
+  while(index >= end){
     let tweet = streams.home[index];
     let $tweet = $('<div class="tweet"></div>');
     let $date = $('<div class="timestamp"></div>')
     let date = getDate();
+    console.log(date);
     $date.text(date);
     $tweet.text('@' + tweet.user + ': ' + tweet.message);
     $tweet.appendTo($('.tweet-container'));
-    $date.appendTo($tweet);
+    $tweet.append($date);
     index -= 1;
   }
+  return newEnd;
 }
