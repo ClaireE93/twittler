@@ -17,7 +17,8 @@ $(document).ready(function(){
       $('.profile-container').css('display', 'none');
     })
     $('.user').on('click', function() {
-      // generateProfile($(this).html());
+      console.log('Generate prof with: ' + $(this).html());
+      generateProfile($(this).html(), 0);
     })
    });
 
@@ -40,40 +41,32 @@ function postTweets(end) {
     $user.text('@' + tweet.user);
     $date.text(date);
     $tweet.text(': ' + tweet.message);
-    // $user.append($tweet).appendTo($('.tweet-container'));
     $tweet.appendTo($('.tweet-container'));
-    $('.user').text('@' + tweet.user);
     $tweet.append($date);
     $tweet.prepend($user);
     index -= 1;
-    console.log(tweet);
   }
   return newEnd;
 }
 
-function generateProfile(user) {
+function generateProfile(user, start) {
   $('.profile-container').css('display', 'flex');
   $('.tweet-container').css('display', 'none');
+  $('.profile-container').html('');
   let username = user.match(/[^@]/gi).join('');
   let tweets = streams.users[username];
-  console.log(tweets);
-
-  let index = streams.home.length - 1;
-  while(index >= end){
-    let tweet = streams.home[index];
+  for(let i = start; i < tweets.length; i++) {
+    let tweetObj = tweets[i];
     let $tweet = $('<div class="tweet"></div>');
     let $date = $('<div class="timestamp"></div>')
-    // let date = getDate();
+    let date = tweetObj.created_at;
     let $user = $('<span class="user"></span>')
-    $user.text('@' + tweet.user);
+    $user.text(user);
     $date.text(date);
-    $tweet.text(': ' + tweet.message);
-    // $user.append($tweet).appendTo($('.tweet-container'));
-    $tweet.appendTo($('.tweet-container'));
-    $('.user').text('@' + tweet.user);
+    $tweet.text(': ' + tweetObj.message);
+    $tweet.appendTo($('.profile-container'));
     $tweet.append($date);
     $tweet.prepend($user);
-    index -= 1;
   }
 
 }
