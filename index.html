@@ -9,19 +9,25 @@
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('');
+        // $body.html('');
 
         var index = streams.home.length - 1;
         while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
+          let tweet = streams.home[index];
+          let $tweet = $('<div class="tweet"></div>');
+          let date = getDate();
+          $tweet.text('@' + tweet.user + ': ' + tweet.message +'\n'));
+          $tweet.appendTo($('.tweet-container'));
           index -= 1;
         }
 
       });
 
+      fuction getDate() {
+
+      }
+
     </script>
+    <div class="tweet-container">Tweets</div>
   </body>
 </html>
