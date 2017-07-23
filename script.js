@@ -16,6 +16,9 @@ $(document).ready(function(){
       $('.tweet-container').css('display', 'flex');
       $('.profile-container').css('display', 'none');
     })
+    $('.user').on('click', function() {
+      // generateProfile();
+    })
    });
 
 function getDate() {
@@ -28,18 +31,20 @@ function getDate() {
 function postTweets(end) {
   var index = streams.home.length - 1;
   var newEnd = index + 1;
-  console.log('start:' + index);
-  console.log('end: ' + end);
   while(index >= end){
     let tweet = streams.home[index];
     let $tweet = $('<div class="tweet"></div>');
     let $date = $('<div class="timestamp"></div>')
     let date = getDate();
-    console.log(date);
+    let $user = $('<span class="user"></span>')
+    $user.text('@' + tweet.user);
     $date.text(date);
-    $tweet.text('@' + tweet.user + ': ' + tweet.message);
+    $tweet.text(': ' + tweet.message);
+    // $user.append($tweet).appendTo($('.tweet-container'));
     $tweet.appendTo($('.tweet-container'));
+    $('.user').text('@' + tweet.user);
     $tweet.append($date);
+    $tweet.prepend($user);
     index -= 1;
   }
   return newEnd;
