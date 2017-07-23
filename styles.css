@@ -1,0 +1,25 @@
+h1{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: normal;
+}
+
+button{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: normal;
+}
+
+.tweet-container{
+
+}
+
+.tweet{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: normal;
+}
+
+.timestamp{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+
+}
