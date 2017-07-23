@@ -1,28 +1,51 @@
 h1{
     font-family: 'Oxygen', sans-serif;
     font-weight: normal;
+    text-align: center
 }
 
 button{
     font-family: 'Oxygen', sans-serif;
     font-weight: normal;
+    font-size: 15px;
+}
+
+body{
+    background: #d7e8f9;
+    /*background: #ecf0f4;*/
+}
+
+.body-container{
+    /*background: #e7eef3;*/
+    background: white;
+    border: solid #b4d4f3;
+    width: 50%;
+    margin: auto;
+    border-radius: 25px;
+}
+
+.button-container{
+    text-align: center;
 }
 
 .tweet-container{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    align-content: center;
 }
 
 .tweet{
     font-family: 'Oxygen', sans-serif;
     font-weight: normal;
+    padding: 0.5em;
+    margin:0.3%;
+    border: solid #bec2c6;
+    border-radius: 1em;
 }
 
 .timestamp{
     font-family: 'Oxygen', sans-serif;
-    font-weight: bold;
+    font-weight: light;
     font-size: 10px;
     text-align: center
 }
