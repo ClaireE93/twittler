@@ -1,7 +1,12 @@
 $(document).ready(function(){
-     var $body = $('body');
+    //  var $body = $('body');
      // $body.html('');
+     $('button').on('click', function() {
+       $('.tweet-container').html('');
+       postTweets();
+     });
      postTweets();
+
 
    });
 
