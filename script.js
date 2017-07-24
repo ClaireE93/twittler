@@ -11,15 +11,20 @@ $(document).ready(function(){
     //  });
     setInterval(function() {
       end = postTweets(end);
+      $('.user').on('click', function() {
+        console.log('Generate prof with: ' + $(this).html());
+        generateProfile($(this).html(), 0);
+      });
     }, 20000);
-    $('h1').on('click', function() {
+
+    $('.title').on('click', function() {
       $('.tweet-container').css('display', 'flex');
       $('.profile-container').css('display', 'none');
     })
     $('.user').on('click', function() {
       console.log('Generate prof with: ' + $(this).html());
       generateProfile($(this).html(), 0);
-    })
+    });
    });
 
 // function getDate() {
