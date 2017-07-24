@@ -13,42 +13,17 @@ a {
     color: black;
 }
 
-/*button{
-    font-family: 'Oxygen', sans-serif;
-    font-weight: bold;
-    font-size: 15px;
-    margin: 5px;
-    background: white;
-    border-radius: 5px;
-    border: solid #b4d4f3;
-    border-width: 2px;
-}
-
-button:hover {
-    text-decoration: underline;
-    border-width: 3px;
-}
-
-button:active{
-    outline: none;
-}*/
-
 body {
     background: #d7e8f9;
-    /*background: #ecf0f4;*/
     margin-top: 0px;
 }
 
 .body-container {
-    /*background: #e7eef3;*/
     background: white;
-    /*border: solid #b4d4f3;*/
     width: 70%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0px;
-    /*border-radius: 25px;*/
-
 }
 
 .button-container {
@@ -85,7 +60,6 @@ body {
     font-weight: light;
     font-size: 12px;
     padding-top: 15px;
-    /*text-align: center;*/
 }
 
 .profile-container {

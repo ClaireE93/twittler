@@ -1,18 +1,11 @@
 let end;
 
 $(document).ready(function(){
-    //  var $body = $('body');
-     // $body.html('');
      end = 0;
      end = postTweets(end);
-    //  $('button').on('click', function() {
-    //   //  $('.tweet-container').html('');
-    //    end = postTweets(end);
-    //  });
     setInterval(function() {
       end = postTweets(end);
       $('.user').on('click', function() {
-        console.log('Generate prof with: ' + $(this).html());
         generateProfile($(this).html(), 0);
       });
     }, 20000);
@@ -25,13 +18,6 @@ $(document).ready(function(){
       generateProfile($(this).html(), 0);
     });
    });
-
-// function getDate() {
-//   let today = new Date();
-//   let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-//   let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-//   return date + ' ' + time;
-// }
 
 function postTweets(end) {
   let index = streams.home.length - 1;
