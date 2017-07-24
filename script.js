@@ -22,7 +22,6 @@ $(document).ready(function(){
       $('.profile-container').css('display', 'none');
     })
     $('.user').on('click', function() {
-      console.log('Generate prof with: ' + $(this).html());
       generateProfile($(this).html(), 0);
     });
    });
