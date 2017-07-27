@@ -108,6 +108,11 @@ form {
     /*background: green;*/
 }
 
+#tweet-button:hover {
+    background: #d7e8f9;
+    border: 2px solid #d7e8f9;
+}
+
 .visitor-name {
     font-family: 'Oxygen', sans-serif;
     margin-left: 5%;
