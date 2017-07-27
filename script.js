@@ -14,6 +14,7 @@ $(document).ready(function(){
     $('.title').on('click', function() {
       $('.tweet-container').css('display', 'flex');
       $('.profile-container').css('display', 'none');
+      $('.form-container').css('display', 'inline');
     })
     $('.user').on('click', function() {
       generateProfile($(this).html(), 0);
@@ -24,20 +25,25 @@ $(document).ready(function(){
       // });
     });
 
-    // $('#tweet-button').on('click', function() {
+    // if($("to-tweet").is(":focus")) {
     //
-    // });
+    // }
+    $('form').on('keydown', function(e) {
+      if(e.keyCode == 13) {
+        postSingleTweet(this);
+      }
+    })
+
+    $('form').on('click', '#tweet-button', function() {
+      postSingleTweet(this.closest('form'));
+    });
    });
 
-function postTweet(form) {
+function postSingleTweet(form) {
   let val = form.tweetInput.value;
+  form.tweetInput.value = '';
   writeTweet(val);
-  // let tweet = {};
-  // tweet.user = 'you';
-  // tweet.message = val;
-  // tweet.created_at = new Date();
-  // addTweet(tweet);
-  postTweets(end);
+  end = postTweets(end);
 }
 
 function updateDates() {
@@ -80,6 +86,7 @@ function postTweets(end) {
 function generateProfile(user, start) {
   $('.profile-container').css('display', 'flex');
   $('.tweet-container').css('display', 'none');
+  $('.form-container').css('display', 'none');
   $('.profile-container').html('');
   let username = user.match(/[^@]/gi).join('');
   let tweets = streams.users[username];
@@ -100,7 +107,4 @@ function generateProfile(user, start) {
     $tweet.append($dateRel);
     $tweet.prepend($user);
   }
-
-
-
 }

@@ -14,7 +14,6 @@ streams.users.sharksforcheap = [];
 streams.users.mracus = [];
 streams.users.douglascalhoun = [];
 streams.users[visitor] = [];
-// window.users = Object.keys(streams.users);
 
 let getUsers = obj => {
   let arr =[];
@@ -36,8 +35,6 @@ var addTweet = function(newTweet){
   streams.users[username].push(newTweet);
   streams.home.push(newTweet);
 };
-
-
 
 // utility function
 var randomElement = function(array){
