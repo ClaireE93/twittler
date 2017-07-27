@@ -84,7 +84,6 @@ body {
 
 form {
     font-family: 'Oxygen', sans-serif;
-    /*font-weight: bold;*/
     margin-left: 5%;
 }
 
@@ -94,7 +93,6 @@ form #tweet-button {
 
 .form-container {
     display: inline;
-    /*text-align: center;*/
 }
 
 #to-tweet {

@@ -3,7 +3,7 @@
  * You can safely leave this file untouched, and confine your changes to index.html.
  */
 
-let visitor = 'claire';
+let visitor = 'ronSWANson';
 
 // set up data structures
 window.streams = {};
@@ -15,6 +15,7 @@ streams.users.mracus = [];
 streams.users.douglascalhoun = [];
 streams.users[visitor] = [];
 
+//Return key array except for visitor key. Otherwise "visitor" will get randomly generated tweets.
 let getUsers = obj => {
   let arr =[];
   let keys = Object.keys(obj);
@@ -27,7 +28,7 @@ let getUsers = obj => {
   return arr;
 };
 
-window.users = getUsers(streams.users); //Return key array except for visitor key.
+window.users = getUsers(streams.users);
 
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
@@ -60,7 +61,6 @@ var generateRandomTweet = function(){
   tweet.message = randomMessage();
   tweet.created_at = new Date();
   addTweet(tweet);
-  // transferTweet();
 };
 
 for(var i = 0; i < 10; i++){
@@ -70,21 +70,14 @@ for(var i = 0; i < 10; i++){
 $('document').ready (function() {
   var scheduleNextTweet = function(){
     generateRandomTweet();
-    transferTweet();
-    setTimeout(scheduleNextTweet, Math.random() * 60000);
+    callPostTweets();
+    setTimeout(scheduleNextTweet, Math.random() * 60000); //Decreased frequency for readability
   };
   scheduleNextTweet();
 
 }
 
 )
-// var scheduleNextTweet = function(){
-//   generateRandomTweet();
-//   console.log('adding');
-//   transferTweet();
-//   setTimeout(scheduleNextTweet, Math.random() * 1500);
-// };
-// scheduleNextTweet();
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)

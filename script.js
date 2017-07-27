@@ -1,46 +1,43 @@
 let end = 0;
 
+//Object of commonly used HTML strings
+let objVar={}
+objVar.tweet = '<div class="tweet"></div>';
+objVar.dateRel = '<div class="timestamp"></div>';
+objVar.dateAbs = '<div class="absolute"></div>';
+objVar.user = '<span class="user"></span>';
+
 $(document).ready(function(){
-    //  end = 0;
      end = postTweets(end);
-    // setInterval(function() {
-    //   end = postTweets(end);
-    //   $('.user').on('click', function() {
-    //     generateProfile($(this).html(), 0);
-    //   });
-    //
-    // }, 20000);
 
     $('.title').on('click', function() {
       $('.tweet-container').css('display', 'flex');
       $('.profile-container').css('display', 'none');
       $('.form-container').css('display', 'inline');
     })
-    // $('.user').on('click', function() {
-    //   generateProfile($(this).html(), 0);
-    // });
+
     $('.tweet-container').on('click', '.user', function() {
       generateProfile($(this).html(), 0);
     });
 
     $('form').on('keydown', function(e) {
       if(e.keyCode == 13) {
-        postSingleTweet(this);
+        postUserTweet(this);
       }
     });
 
     $('form').on('click', '#tweet-button', function() {
-      postSingleTweet(this.closest('form'));
+      postUserTweet(this.closest('form'));
     });
    });
 
-function postSingleTweet(form) {
+function postUserTweet(form) {
   let val = form.tweetInput.value;
   form.tweetInput.value = '';
   writeTweet(val);
   end = postTweets(end);
 }
-
+//Update relative dates/times.
 function updateDates() {
   let absTime, relTime;
   let divs = document.getElementsByClassName('timestamp');
@@ -57,16 +54,16 @@ function postTweets(end) {
   let newEnd = index + 1;
   while(index >= end){
     let tweet = streams.home[index];
-    let $tweet = $('<div class="tweet"></div>');
-    let $dateRel = $('<div class="timestamp"></div>');
-    let $date = $('<div class="absolute"></div>');
+    let $tweet = $(objVar.tweet);
+    let $dateRel = $(objVar.dateRel);
+    let $date = $(objVar.dateAbs);
     let date = tweet.created_at.toString();
     let dateRelative = moment(tweet.created_at).fromNow();
-    let $user = $('<span class="user"></span>');
+    let $user = $(objVar.user);
     $user.text('@' + tweet.user);
     $date.text(date);
     $dateRel.text(dateRelative);
-    $date.appendTo($dateRel);
+    $date.appendTo($dateRel); //Store absolute date so relative date can be updated
     $tweet.text(': ' + tweet.message);
     $tweet.appendTo($('.tweet-container'));
     $tweet.append($dateRel);
@@ -78,7 +75,8 @@ function postTweets(end) {
   return newEnd;
 }
 
-function transferTweet() {
+//Use to call postTweets from data_generator.js
+function callPostTweets() {
   end = postTweets(end);
 }
 
@@ -92,16 +90,16 @@ function generateProfile(user, start) {
   let tweets = streams.users[username];
   for(let i = start; i < tweets.length; i++) {
     let tweetObj = tweets[i];
-    let $tweet = $('<div class="tweet"></div>');
-    let $dateRel = $('<div class="timestamp"></div>');
-    let $date = $('<div class="absolute"></div>');
+    let $tweet = $(objVar.tweet);
+    let $dateRel = $(objVar.dateRel);
+    let $date = $(objVar.dateAbs);
     let date = tweetObj.created_at.toString();
     let dateRelative = moment(tweetObj.created_at).fromNow();
-    let $user = $('<span class="user"></span>')
+    let $user = $(objVar.user);
     $user.text(user);
     $date.text(date);
     $dateRel.text(dateRelative);
-    $date.appendTo($dateRel);
+    $date.appendTo($dateRel);  //Store absolute date so relative date can be updated
     $tweet.text(': ' + tweetObj.message);
     $tweet.appendTo($('.profile-container'));
     $tweet.append($dateRel);
