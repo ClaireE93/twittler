@@ -49,6 +49,7 @@ function postUserTweet(form) {
   writeTweet(val);
   end = postTweets(end);
 }
+
 //Update relative dates/times.
 function updateDates() {
   let absTime, relTime;
@@ -119,12 +120,12 @@ function generateProfile(user, start) {
   }
 }
 
+//Cycle through some nifty placeholder strings
 function generatePlaceholderText() {
   let ind = Math.floor(Math.random() * quotesArr.length);
   $('input').attr('placeholder', quotesArr[ind]);
 }
 
-//Ron Swanson quotes to cycle through :)
 let quotesArr = ['Never half-ass two things. Whole-ass one thing.',
 'Clear alcohols are for rich women on diets',
 'When I eat, it is the food that is scared',
