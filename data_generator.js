@@ -3,6 +3,8 @@
  * You can safely leave this file untouched, and confine your changes to index.html.
  */
 
+let visitor = 'claire';
+
 // set up data structures
 window.streams = {};
 streams.home = [];
@@ -11,7 +13,22 @@ streams.users.shawndrost = [];
 streams.users.sharksforcheap = [];
 streams.users.mracus = [];
 streams.users.douglascalhoun = [];
-window.users = Object.keys(streams.users);
+streams.users[visitor] = [];
+// window.users = Object.keys(streams.users);
+
+let getUsers = obj => {
+  let arr =[];
+  let keys = Object.keys(obj);
+  keys.forEach (cur => {
+    if(cur !== visitor) {
+      arr.push(cur);
+    }
+  });
+
+  return arr;
+};
+
+window.users = getUsers(streams.users); //Return key array except for visitor key.
 
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
@@ -19,6 +36,8 @@ var addTweet = function(newTweet){
   streams.users[username].push(newTweet);
   streams.home.push(newTweet);
 };
+
+
 
 // utility function
 var randomElement = function(array){
@@ -65,5 +84,6 @@ var writeTweet = function(message){
   var tweet = {};
   tweet.user = visitor;
   tweet.message = message;
+  tweet.created_at = new Date();
   addTweet(tweet);
 };

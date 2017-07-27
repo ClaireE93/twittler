@@ -17,8 +17,28 @@ $(document).ready(function(){
     })
     $('.user').on('click', function() {
       generateProfile($(this).html(), 0);
+
+      // $('#tweet-button').on('click', function() {
+      //   console.log('hi');
+      //   postTweet();
+      // });
     });
+
+    // $('#tweet-button').on('click', function() {
+    //
+    // });
    });
+
+function postTweet(form) {
+  let val = form.tweetInput.value;
+  writeTweet(val);
+  // let tweet = {};
+  // tweet.user = 'you';
+  // tweet.message = val;
+  // tweet.created_at = new Date();
+  // addTweet(tweet);
+  postTweets(end);
+}
 
 function updateDates() {
   let absTime, relTime;
@@ -53,7 +73,7 @@ function postTweets(end) {
     index -= 1;
   }
   updateDates();
-  
+
   return newEnd;
 }
 
