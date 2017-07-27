@@ -16,7 +16,10 @@ $(document).ready(function(){
       $('.profile-container').css('display', 'none');
       $('.form-container').css('display', 'inline');
     })
-    $('.user').on('click', function() {
+    // $('.user').on('click', function() {
+    //   generateProfile($(this).html(), 0);
+    // });
+    $('.tweet-container').on('click', '.user', function() {
       generateProfile($(this).html(), 0);
     });
 

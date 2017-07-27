@@ -71,7 +71,7 @@ $('document').ready (function() {
   var scheduleNextTweet = function(){
     generateRandomTweet();
     transferTweet();
-    setTimeout(scheduleNextTweet, Math.random() * 100000);
+    setTimeout(scheduleNextTweet, Math.random() * 60000);
   };
   scheduleNextTweet();
 
