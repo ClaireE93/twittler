@@ -1,15 +1,15 @@
-let end;
+let end = 0;
 
 $(document).ready(function(){
-     end = 0;
+    //  end = 0;
      end = postTweets(end);
-    setInterval(function() {
-      end = postTweets(end);
-      $('.user').on('click', function() {
-        generateProfile($(this).html(), 0);
-      });
-
-    }, 20000);
+    // setInterval(function() {
+    //   end = postTweets(end);
+    //   $('.user').on('click', function() {
+    //     generateProfile($(this).html(), 0);
+    //   });
+    //
+    // }, 20000);
 
     $('.title').on('click', function() {
       $('.tweet-container').css('display', 'flex');
@@ -18,21 +18,13 @@ $(document).ready(function(){
     })
     $('.user').on('click', function() {
       generateProfile($(this).html(), 0);
-
-      // $('#tweet-button').on('click', function() {
-      //   console.log('hi');
-      //   postTweet();
-      // });
     });
 
-    // if($("to-tweet").is(":focus")) {
-    //
-    // }
     $('form').on('keydown', function(e) {
       if(e.keyCode == 13) {
         postSingleTweet(this);
       }
-    })
+    });
 
     $('form').on('click', '#tweet-button', function() {
       postSingleTweet(this.closest('form'));
@@ -83,7 +75,12 @@ function postTweets(end) {
   return newEnd;
 }
 
+function transferTweet() {
+  end = postTweets(end);
+}
+
 function generateProfile(user, start) {
+  console.log('in the function');
   $('.profile-container').css('display', 'flex');
   $('.tweet-container').css('display', 'none');
   $('.form-container').css('display', 'none');

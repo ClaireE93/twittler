@@ -60,17 +60,31 @@ var generateRandomTweet = function(){
   tweet.message = randomMessage();
   tweet.created_at = new Date();
   addTweet(tweet);
+  // transferTweet();
 };
 
 for(var i = 0; i < 10; i++){
   generateRandomTweet();
 }
 
-var scheduleNextTweet = function(){
-  generateRandomTweet();
-  setTimeout(scheduleNextTweet, Math.random() * 1500);
-};
-scheduleNextTweet();
+$('document').ready (function() {
+  var scheduleNextTweet = function(){
+    generateRandomTweet();
+    transferTweet();
+    setTimeout(scheduleNextTweet, Math.random() * 100000);
+  };
+  scheduleNextTweet();
+
+}
+
+)
+// var scheduleNextTweet = function(){
+//   generateRandomTweet();
+//   console.log('adding');
+//   transferTweet();
+//   setTimeout(scheduleNextTweet, Math.random() * 1500);
+// };
+// scheduleNextTweet();
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)
