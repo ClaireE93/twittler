@@ -73,7 +73,7 @@ $('document').ready (function() {
   var scheduleNextTweet = function(){
     generateRandomTweet();
     callPostTweets();
-    setTimeout(scheduleNextTweet, Math.random() * 60000); //Decreased frequency for readability
+    setTimeout(scheduleNextTweet, Math.random() * 40000); //Decreased frequency for readability
   };
   scheduleNextTweet();
 
