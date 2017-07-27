@@ -58,7 +58,7 @@ body {
 .timestamp {
     font-family: 'Oxygen', sans-serif;
     font-weight: light;
-    font-size: 12px;
+    font-size: 13px;
     padding-top: 15px;
 }
 
@@ -87,17 +87,28 @@ form {
     margin-left: 5%;
 }
 
-form #tweet-button {
-    font-size: inherit;
-}
-
 .form-container {
     display: inline;
 }
 
 #to-tweet {
     width: 70%;
-    height: inherit;
+    height: 20px;
     font-size: inherit;
     font-family: inherit;
+}
+#tweet-button {
+    background: white;
+    font-size: inherit;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 2px solid #bec2c6;
+
+    /*height: 20px;*/
+    /*background: green;*/
+}
+
+.visitor-name {
+    font-family: 'Oxygen', sans-serif;
+    margin-left: 5%;
 }

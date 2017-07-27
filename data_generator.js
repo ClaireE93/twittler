@@ -3,7 +3,7 @@
  * You can safely leave this file untouched, and confine your changes to index.html.
  */
 
-let visitor = 'ronSWANson';
+let visitor ='ronSWANson'; //Change username here if desired
 
 // set up data structures
 window.streams = {};
@@ -68,6 +68,8 @@ for(var i = 0; i < 10; i++){
 }
 
 $('document').ready (function() {
+  getVisitor(visitor);
+
   var scheduleNextTweet = function(){
     generateRandomTweet();
     callPostTweets();
