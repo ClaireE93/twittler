@@ -2,12 +2,12 @@ let end = 0;
 let visitorName; //Change name in data_generator.js if desired
 
 //Object of commonly used HTML strings
-const objVar={
+const objVar = {
   tweet : '<div class="tweet"></div>',
   dateRel : '<div class="timestamp"></div>',
   dateAbs : '<div class="absolute"></div>',
   user : '<span class="user"></span>'
-}
+};
 
 $(document).ready(function(){
   genVisitorText(visitorName);
@@ -17,7 +17,7 @@ $(document).ready(function(){
     $('.tweet-container').css('display', 'flex');
     $('.profile-container').css('display', 'none');
     $('.form-container').css('display', 'inline');
-  })
+  });
 
   $('.tweet-container').on('click', '.user', function() {
     generateProfile($(this).html());
@@ -26,13 +26,13 @@ $(document).ready(function(){
   $('form').on('keydown', function(e) {
     if(e.keyCode == 13) {
       postUserTweet(this);
-      generatePlaceholderText()
+      generatePlaceholderText();
     }
   });
 
   $('form').on('click', '#tweet-button', function() {
     postUserTweet(this.closest('form'));
-    generatePlaceholderText()
+    generatePlaceholderText();
   });
 
 });
