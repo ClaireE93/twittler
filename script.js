@@ -2,11 +2,12 @@ let end = 0;
 let visitorName; //Change name in data_generator.js if desired
 
 //Object of commonly used HTML strings
-let objVar={}
-objVar.tweet = '<div class="tweet"></div>';
-objVar.dateRel = '<div class="timestamp"></div>';
-objVar.dateAbs = '<div class="absolute"></div>';
-objVar.user = '<span class="user"></span>';
+const objVar={
+  tweet : '<div class="tweet"></div>',
+  dateRel : '<div class="timestamp"></div>',
+  dateAbs : '<div class="absolute"></div>',
+  user : '<span class="user"></span>'
+}
 
 $(document).ready(function(){
   genVisitorText(visitorName);
@@ -19,7 +20,7 @@ $(document).ready(function(){
   })
 
   $('.tweet-container').on('click', '.user', function() {
-    generateProfile($(this).html(), 0);
+    generateProfile($(this).html());
   });
 
   $('form').on('keydown', function(e) {
@@ -66,12 +67,12 @@ function postTweets(end) {
   let index = streams.home.length - 1;
   let newEnd = index + 1;
   while(index >= end){
-    let tweet = streams.home[index];
+    const tweet = streams.home[index];
+    const date = tweet.created_at.toString();
+    const dateRelative = moment(tweet.created_at).fromNow();
     let $tweet = $(objVar.tweet);
     let $dateRel = $(objVar.dateRel);
     let $date = $(objVar.dateAbs);
-    let date = tweet.created_at.toString();
-    let dateRelative = moment(tweet.created_at).fromNow();
     let $user = $(objVar.user);
     $user.text('@' + tweet.user);
     $date.text(date);
@@ -93,21 +94,20 @@ function callPostTweets() {
   end = postTweets(end);
 }
 
-function generateProfile(user, start) {
-  console.log('in the function');
+function generateProfile(user) {
   $('.profile-container').css('display', 'flex');
   $('.tweet-container').css('display', 'none');
   $('.form-container').css('display', 'none');
   $('.profile-container').html('');
-  let username = user.match(/[^@]/gi).join('');
-  let tweets = streams.users[username];
-  for(let i = start; i < tweets.length; i++) {
-    let tweetObj = tweets[i];
+  const username = user.match(/[^@]/gi).join('');
+  const tweets = streams.users[username];
+  tweets.forEach((el) => {
+    const tweetObj = el;
+    const date = tweetObj.created_at.toString();
+    const dateRelative = moment(tweetObj.created_at).fromNow();
     let $tweet = $(objVar.tweet);
     let $dateRel = $(objVar.dateRel);
     let $date = $(objVar.dateAbs);
-    let date = tweetObj.created_at.toString();
-    let dateRelative = moment(tweetObj.created_at).fromNow();
     let $user = $(objVar.user);
     $user.text(user);
     $date.text(date);
@@ -117,16 +117,16 @@ function generateProfile(user, start) {
     $tweet.appendTo($('.profile-container'));
     $tweet.append($dateRel);
     $tweet.prepend($user);
-  }
+  });
 }
 
 //Cycle through some nifty placeholder strings
 function generatePlaceholderText() {
-  let ind = Math.floor(Math.random() * quotesArr.length);
+  const ind = Math.floor(Math.random() * quotesArr.length);
   $('input').attr('placeholder', quotesArr[ind]);
 }
 
-let quotesArr = ['Never half-ass two things. Whole-ass one thing.',
+const quotesArr = ['Never half-ass two things. Whole-ass one thing.',
 'Clear alcohols are for rich women on diets.',
 'When I eat, it is the food that is scared.',
 'Crying: acceptable at funerals and the Grand Canyon.',

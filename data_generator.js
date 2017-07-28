@@ -3,7 +3,7 @@
  * You can safely leave this file untouched, and confine your changes to index.html.
  */
 
-let visitor ='ronSWANson'; //Change username here if desired
+const visitor ='ronSWANson'; //Change username here if desired
 
 // set up data structures
 window.streams = {};
@@ -18,7 +18,7 @@ streams.users[visitor] = [];
 //Return key array except for visitor key. Otherwise "visitor" will get randomly generated tweets.
 let getUsers = obj => {
   let arr =[];
-  let keys = Object.keys(obj);
+  const keys = Object.keys(obj);
   keys.forEach (cur => {
     if(cur !== visitor) {
       arr.push(cur);
