@@ -26,25 +26,25 @@ $(document).ready(function(){
   $('form').on('keyup', function(e) {
     if(e.which === 13) {
       postUserTweet(this);
-      generatePlaceholderText();
+      genPlaceholder();
     }
   });
 
   $('form').on('click', '#tweet-button', function() {
     postUserTweet(this.closest('form'));
-    generatePlaceholderText();
+    genPlaceholder();
   });
 });
 
-const getVisitor = function getVisitor(name) {
+const getVisitor = function getVisitorFromDataGeneratorJSFile(name) {
   visitorName = name;
 };
 
-const genVisitorText = function genVisitorText(name) {
+const genVisitorText = function generateVisitorNameText(name) {
   $('.visitor-name').html('<strong>@' + name + '</strong> says...');
 };
 
-const postUserTweet = function postUserTweet(form) {
+const postUserTweet = function postUserTweetFromForm(form) {
   let val = form.tweetInput.value;
   if (val === '' || val === null) return 'no val';
   form.tweetInput.value = '';
@@ -53,7 +53,7 @@ const postUserTweet = function postUserTweet(form) {
 };
 
 //Update relative dates/times.
-const updateDates = function updateDates() {
+const updateDates = function updateRelativeTimeAndDate() {
   let absTime, relTime;
   let divs = document.getElementsByClassName('timestamp');
   for (let i = 0; i < divs.length; i++) {
@@ -64,7 +64,7 @@ const updateDates = function updateDates() {
   }
 };
 
-const postTweets = function postTweets(end) {
+const postTweets = function postTweetsFromAllUsers(end) {
   let index = streams.home.length - 1;
   let newEnd = index + 1;
   while(index >= end){
@@ -91,11 +91,11 @@ const postTweets = function postTweets(end) {
 };
 
 //Use to call postTweets from data_generator.js
-const callPostTweets = function callPostTweets() {
+const callPostTweets = function callPostTweetsFuncFromDataGeneratorJS() {
   end = postTweets(end);
 };
 
-const generateProfile = function generateProfile(user) {
+const generateProfile = function generateSingleUserProfile(user) {
   $('.profile-container').css('display', 'flex');
   $('.tweet-container').css('display', 'none');
   $('.form-container').css('display', 'none');
@@ -122,7 +122,7 @@ const generateProfile = function generateProfile(user) {
 };
 
 //Cycle through some nifty placeholder strings
-const generatePlaceholderText = function generatePlaceholderText() {
+const genPlaceholder = function generateFormPlaceholderText() {
   const ind = Math.floor(Math.random() * quotesArr.length);
   $('input').attr('placeholder', quotesArr[ind]);
 };
