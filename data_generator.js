@@ -16,10 +16,10 @@ streams.users.douglascalhoun = [];
 streams.users[visitor] = [];
 
 //Return key array except for visitor key. Otherwise "visitor" will get randomly generated tweets.
-let getUsers = obj => {
+const getUsers = function getUsers(obj) {
   let arr =[];
   const keys = Object.keys(obj);
-  keys.forEach (cur => {
+  keys.forEach ((cur) => {
     if(cur !== visitor) {
       arr.push(cur);
     }

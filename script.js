@@ -6,7 +6,7 @@ const objVar = {
   tweet : '<div class="tweet"></div>',
   dateRel : '<div class="timestamp"></div>',
   dateAbs : '<div class="absolute"></div>',
-  user : '<span class="user"></span>'
+  user : '<span class="user"></span>',
 };
 
 $(document).ready(function(){
@@ -37,22 +37,23 @@ $(document).ready(function(){
 
 });
 
-function getVisitor (name) {
+const getVisitor = function getVisitor(name) {
   visitorName = name;
-}
-function genVisitorText(name) {
-  $('.visitor-name').html('<strong>@' + name + '</strong> says...');
-}
+};
 
-function postUserTweet(form) {
+const genVisitorText = function genVisitorText(name) {
+  $('.visitor-name').html('<strong>@' + name + '</strong> says...');
+};
+
+const postUserTweet = function postUserTweet(form) {
   let val = form.tweetInput.value;
   form.tweetInput.value = '';
   writeTweet(val);
   end = postTweets(end);
-}
+};
 
 //Update relative dates/times.
-function updateDates() {
+const updateDates = function updateDates() {
   let absTime, relTime;
   let divs = document.getElementsByClassName('timestamp');
   for (let i = 0; i < divs.length; i++) {
@@ -61,9 +62,9 @@ function updateDates() {
     relTime = moment(Date.parse(absTime)).fromNow();
     cur.childNodes[0].nodeValue = relTime;
   }
-}
+};
 
-function postTweets(end) {
+const postTweets = function postTweets(end) {
   let index = streams.home.length - 1;
   let newEnd = index + 1;
   while(index >= end){
@@ -87,14 +88,14 @@ function postTweets(end) {
   updateDates();
 
   return newEnd;
-}
+};
 
 //Use to call postTweets from data_generator.js
-function callPostTweets() {
+const callPostTweets = function callPostTweets() {
   end = postTweets(end);
-}
+};
 
-function generateProfile(user) {
+const generateProfile = function generateProfile(user) {
   $('.profile-container').css('display', 'flex');
   $('.tweet-container').css('display', 'none');
   $('.form-container').css('display', 'none');
@@ -118,13 +119,13 @@ function generateProfile(user) {
     $tweet.append($dateRel);
     $tweet.prepend($user);
   });
-}
+};
 
 //Cycle through some nifty placeholder strings
-function generatePlaceholderText() {
+const generatePlaceholderText = function generatePlaceholderText() {
   const ind = Math.floor(Math.random() * quotesArr.length);
   $('input').attr('placeholder', quotesArr[ind]);
-}
+};
 
 const quotesArr = ['Never half-ass two things. Whole-ass one thing.',
 'Clear alcohols are for rich women on diets.',
