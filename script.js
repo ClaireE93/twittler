@@ -23,8 +23,8 @@ $(document).ready(function(){
     generateProfile($(this).html());
   });
 
-  $('form').on('keydown', function(e) {
-    if(e.keyCode == 13) {
+  $('form').on('keyup', function(e) {
+    if(e.which === 13) {
       postUserTweet(this);
       generatePlaceholderText();
     }
