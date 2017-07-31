@@ -47,6 +47,7 @@ const genVisitorText = function genVisitorText(name) {
 
 const postUserTweet = function postUserTweet(form) {
   let val = form.tweetInput.value;
+  if (val === '' || val === null) return 'no val';
   form.tweetInput.value = '';
   writeTweet(val);
   end = postTweets(end);
