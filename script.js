@@ -34,7 +34,6 @@ $(document).ready(function(){
     postUserTweet(this.closest('form'));
     generatePlaceholderText();
   });
-
 });
 
 const getVisitor = function getVisitor(name) {
@@ -128,12 +127,14 @@ const generatePlaceholderText = function generatePlaceholderText() {
   $('input').attr('placeholder', quotesArr[ind]);
 };
 
-const quotesArr = ['Never half-ass two things. Whole-ass one thing.',
-'Clear alcohols are for rich women on diets.',
-'When I eat, it is the food that is scared.',
-'Crying: acceptable at funerals and the Grand Canyon.',
-'Any dog under 50 pounds is a cat and cats are useless.',
-'There is only one bad word: taxes.',
-'Child labor laws are ruining this country.',
-'Breakfast food can serve many purposes.',
-'You had me at meat tornado.'];
+const quotesArr = [
+  'Never half-ass two things. Whole-ass one thing.',
+  'Clear alcohols are for rich women on diets.',
+  'When I eat, it is the food that is scared.',
+  'Crying: acceptable at funerals and the Grand Canyon.',
+  'Any dog under 50 pounds is a cat and cats are useless.',
+  'There is only one bad word: taxes.',
+  'Child labor laws are ruining this country.',
+  'Breakfast food can serve many purposes.',
+  'You had me at meat tornado.'
+];
